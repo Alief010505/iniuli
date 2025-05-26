@@ -1,0 +1,126 @@
+/* Font romantis dan modern */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #fddde6, #f3c6e0);
+  color: #4a4a4a;
+}
+
+header {
+  background-color: rgba(255, 192, 203, 0.7);
+  padding: 30px 0;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 48px;
+  color: #a63d64;
+  margin: 0;
+}
+
+section {
+  max-width: 800px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(255, 182, 193, 0.3);
+}
+
+section h2 {
+  color: #d63384;
+  font-weight: 500;
+  font-size: 24px;
+  border-bottom: 2px dashed #f9c6d3;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+section p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 10px 0;
+}
+
+.foto-profil {
+  display: block;
+  width: 400px;
+  height: auto;
+  border-radius: 20px;
+  margin: 20px auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  position: relative;
+  height: 100px;
+  margin-top: 50px;
+  background: linear-gradient(to top, #ffeef4, #fff);
+  overflow: hidden;
+}
+
+.bebek-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: -200px;
+  animation: jalanBebek 10s linear infinite;
+}
+
+.bebek {
+  height: 80px;
+  object-fit: contain;
+}
+
+/* Animasi bebek jalan dari kiri ke kanan */
+@keyframes jalanBebek {
+  100% {
+    left: -200px;
+    bottom: 0;
+  }
+  75% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 0px;
+  }
+  25% {
+    bottom: 10px;
+  }
+  0% {
+    left: 100%;
+    bottom: 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  section {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  section h2 {
+    font-size: 20px;
+  }
+
+  section p {
+    font-size: 15px;
+  }
+
+  .foto-profil {
+    width: 90%;
+  }
+
+  .bebek {
+    height: 60px;
+  }
+}
