@@ -3,43 +3,190 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Biodata</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Biodata Uli Zahrati</title>
+  
+  <!-- Memuat Tailwind CSS untuk styling modern -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Memuat font 'Nunito' yang terlihat lebih bulat dan imut -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Konfigurasi Tailwind untuk menggunakan font Nunito -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Nunito', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- CSS Kustom untuk Animasi -->
+  <style>
+    /* Animasi untuk memunculkan elemen secara perlahan */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Kelas untuk menerapkan animasi fade-in */
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0; /* Mulai dari transparan */
+    }
+
+    /* Penundaan animasi agar muncul satu per satu */
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+
+    /* Animasi untuk foto profil (mengambang pelan) */
+    @keyframes pulse-float {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      50% {
+        transform: scale(1.03);
+        /* Bayangan yang lebih menonjol dengan warna tema */
+        box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.3), 0 4px 6px -2px rgba(13, 148, 136, 0.2);
+      }
+    }
+    .foto-anim {
+      animation: pulse-float 4s ease-in-out infinite;
+    }
+
+    /* Animasi bebek berjalan dan melompat */
+    .bebek-anim {
+      font-size: 3rem; /* Ukuran emoji bebek */
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0;
+      /* Animasi berjalan melintasi layar dan melompat */
+      animation: walk-and-hop 15s linear infinite;
+    }
+
+    @keyframes walk-and-hop {
+      0% { transform: translateX(-100px) translateY(0); }
+      25% { transform: translateX(calc(25vw)) translateY(-10px); } /* Lompat */
+      50% { transform: translateX(calc(50vw)) translateY(0); }
+      75% { transform: translateX(calc(75vw)) translateY(-10px); } /* Lompat */
+      100% { transform: translateX(calc(100vw + 50px)) translateY(0); }
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <h1>Biodata Pribadi</h1>
+<!-- Latar belakang warna teal yang lembut dan cegah scroll horizontal -->
+<body class="bg-teal-50 text-gray-800 min-h-screen flex flex-col font-sans overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="text-center p-8 fade-in">
+    <h1 class="text-5xl font-black text-teal-700 tracking-tight">
+      Biodata Pribadi
+    </h1>
   </header>
 
-  <section>
-    <img src="foto.jpg" alt="Foto Profil" class="foto-profil">
-    <h2>Nama</h2>
-    <p>Uli Zahati</p>
+  <!-- Konten Utama: Kartu Biodata -->
+  <main class="w-full max-w-3xl mx-auto p-4 sm:p-8 flex-grow">
+    <div class="bg-white shadow-2xl rounded-2xl p-6 sm:p-10">
+      
+      <!-- Bagian Foto Profil -->
+      <section class="text-center mb-8 fade-in delay-1">
+        <img 
+          src="foto.jpg" 
+          alt="Foto Profil" 
+          class="w-40 h-40 rounded-full mx-auto border-4 border-teal-300 object-cover foto-anim transition-transform duration-300 hover:scale-110"
+          onerror="this.src='https://placehold.co/150x150/a0dee0/333?text=Foto+Error'"
+        >
+        <h2 class="text-3xl font-bold text-teal-900 mt-4">Uli Zahrati</h2>
+      </section>
 
-    <h2>Alamat</h2>
-    <p>Lam Ara Teunong, Aceh Besar</p>
+      <!-- Layout Grid untuk detail biodata -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Kolom Info Kontak (dengan ikon) -->
+        <section class="fade-in delay-2">
+          <h3 class="text-2xl font-bold text-teal-800 mb-4 border-b-2 border-teal-200 pb-2">Info Kontak</h3>
+          <div class="space-y-4">
+            <!-- Alamat -->
+            <div class="flex items-start">
+              <span class="text-2xl mr-3 text-teal-500">📍</span>
+              <div>
+                <h4 class="font-bold text-gray-600">Alamat</h4>
+                <p>Lam Ara Teunong, Aceh Besar</p>
+              </div>
+            </div>
+            <!-- Telepon -->
+            <div class="flex items-start">
+              <span class="text-2xl mr-3 text-teal-500">📞</span>
+              <div>
+                <h4 class="font-bold text-gray-600">Telepon</h4>
+                <p>+62 8********48</p>
+              </div>
+            </div>
+            <!-- Email -->
+            <div class="flex items-start">
+              <span class="text-2xl mr-3 text-teal-500">✉️</span>
+              <div>
+                <h4 class="font-bold text-gray-600">Email</h4>
+                <p>ulyzah****@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-    <h2>Telepon</h2>
-    <p>+62 859-7289-4848</p>
+        <!-- Kolom Pendidikan & Pengalaman -->
+        <section class="space-y-8">
+          <!-- Pendidikan -->
+          <div class="fade-in delay-3">
+            <h3 class="text-2xl font-bold text-teal-800 mb-4 border-b-2 border-teal-200 pb-2">Pendidikan</h3>
+            <div class="flex items-start">
+              <span class="text-2xl mr-3 text-teal-500">🎓</span>
+              <div>
+                <p class="font-semibold">Fakultas Kedokteran Hewan</p>
+                <p class="text-gray-600">Universitas Syiah Kuala</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pengalaman -->
+          <div class="fade-in delay-4">
+            <h3 class="text-2xl font-bold text-teal-800 mb-4 border-b-2 border-teal-200 pb-2">Pengalaman</h3>
+            <div class="flex items-start">
+              <span class="text-2xl mr-3 text-teal-500">💼</span>
+              <div>
+                <p class="font-semibold">Ngerjain orang</p>
+                <p class="text-gray-600 italic">(Ahli di bidang ini)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+      </div> <!-- Akhir Grid -->
+    </div> <!-- Akhir Kartu -->
+  </main>
 
-    <h2>Email</h2>
-    <p>ulyzahrati144@gmail.com</p>
-  </section>
-
-  <section>
-    <h2>Pendidikan</h2>
-    <p>Fakultas Kedokteran Hewan - Universitas Syiah Kuala</p>
-  </section>
-
-  <section>
-    <h2>Pengalaman Kerja</h2>
-    <p>Ngerjain orang</p>
-  </section>
-
-  <footer>
-    <div class="bebek-wrapper">
-      <img src="bebek.png" alt="Bebek Berjalan" class="bebek">
-    </div>
+  <!-- Footer dengan Animasi Bebek -->
+  <!-- 'relative' agar 'absolute' di dalamnya berfungsi -->
+  <footer class="w-full h-24 relative mt-10">
+    <!-- Bebek yang berjalan -->
+    <div class="bebek-anim">🦆</div>
+    
+    <!-- Garis tanah agar bebek tidak terlihat melayang -->
+    <div class="absolute bottom-0 left-0 w-full h-4 bg-teal-600"></div>
+    <div class="absolute bottom-4 left-0 w-full h-2 bg-teal-700 opacity-50"></div>
   </footer>
+  
 </body>
 </html>
